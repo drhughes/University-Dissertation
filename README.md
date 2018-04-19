@@ -1,4 +1,5 @@
-The data CD contains all of the source code written by the author.
+#Timetable Application
+###The data CD contains all of the source code written by the author.
 
 Example_Timetable_Printout.pdf is an example of the printout that the timetable application generates for a student ID
 
@@ -20,12 +21,12 @@ GenerateData.cfm holds the code that produces an XML document
 These next three are the same page intranet page but they set different SESSION variables to simulate users logging in.
 Halesowen College - Intranet_ben07071174.cfm
 Halesowen College - Intranet_dee07068776.cfm 
-Halesowen College – Intranet_staff.cfm
+Halesowen College ï¿½ Intranet_staff.cfm
 IntranetIndex.cfm is a list of links to the above three pages to aid the user. 
 infoBanner.jpg, script.js, timetableStyle.css are all pages that the web pages access. 
 timetable.jar is a JAR file containing all source relating to the Java Applet.
-Timetable_App.cfm – this is the page that the Java Applet is embedded within.
-Timetable_Search.cfm – this is the staff search facility page.
+Timetable_App.cfm ï¿½ this is the page that the Java Applet is embedded within.
+Timetable_Search.cfm ï¿½ this is the staff search facility page.
 
 SQL_Server_2005
 Contains a detailed database schema spreadsheet, and a folder Stored_Procedures that contains text files showing the stored procedures that should exist in the SQL server for data gathering. 
