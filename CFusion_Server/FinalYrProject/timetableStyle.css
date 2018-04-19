@@ -1,0 +1,49 @@
+.tableMain{
+font-family:Verdana, Arial, Helvetica, sans-serif; 
+color:#FFFFFF;
+font-size:14px;
+background-color:#408080;
+font-weight:bold;
+}
+.tableResults{
+font-family:Verdana, Arial, Helvetica, sans-serif; 
+color:#FFFFFF;
+font-size:14px;
+background-color:#999999;
+font-weight:bold;
+}
+.textboxLabel{
+color:#000000;
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:12px
+}
+.textboxLabelInfo{
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:10px; 
+color:#666666;
+}
+.resultName{
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:12px; 
+color:#000000;
+}
+a.link{
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:13px; 
+color:#000000;
+text-decoration:underline;
+}
+a:hover{
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:13px; 
+color:#408080;
+text-decoration:none;
+}
+
+.tableMainError{
+font-family:Verdana, Arial, Helvetica, sans-serif; 
+color:#FFFFFF;
+font-size:14px;
+background-color:#FF3333;
+font-weight:bold;
+}

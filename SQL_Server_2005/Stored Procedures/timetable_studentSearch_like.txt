@@ -1,0 +1,28 @@
+CREATE PROCEDURE FYP.timetable_studentSearch_like (
+@studentid varchar(11),
+@sortOrder varchar(4),
+@sortColumn varchar(15)
+)
+AS
+
+IF @sortOrder = 'ASC'
+BEGIN
+SELECT STUDENT_ID, RTRIM(LTRIM(forename)) AS forename, RTRIM(LTRIM(surname)) AS surname
+FROM halesowen_college.dbo.STMBIOGR
+WHERE STUDENT_ID LIKE '%' +@studentid + '%'
+ORDER BY 
+CASE WHEN @sortColumn ='student_id' THEN student_id END ASC,
+CASE WHEN @sortColumn ='forename' THEN forename END ASC,
+CASE WHEN @sortColumn ='surname' THEN surname END ASC
+END
+ELSE IF @sortOrder = 'DESC'
+BEGIN
+SELECT STUDENT_ID, RTRIM(LTRIM(forename)) AS forename, RTRIM(LTRIM(surname)) AS surname
+FROM halesowen_college.dbo.STMBIOGR
+WHERE STUDENT_ID LIKE '%' +@studentid + '%'
+ORDER BY
+CASE WHEN @sortColumn ='student_id' THEN student_id END DESC,
+CASE WHEN @sortColumn ='forename' THEN forename END DESC,
+CASE WHEN @sortColumn ='surname' THEN surname END DESC
+END
+GO

@@ -1,0 +1,37 @@
+CREATE PROCEDURE FYP.getLectureEventsByStudentIDFaster (
+@studentid char(11)
+)
+AS
+
+SELECT CT_EVENT.event_id, CT_EVENT.weeks, 
+modules.name AS lecture, modules.student_id, modules.forename, modules.surname,  
+day_of_week, start_time, end_time,
+rooms.roomName,
+staff.staffName
+FROM	CT_EVENT_MODULE, 
+		(SELECT     STMBIOGR.forename AS forename, STMBIOGR.surname AS surname, module_id, name, STMAOS.student_id, aos_code, aos_period
+		FROM         offline_celcat.dbo.CT_MODULE AS CT_MODULE, halesowen_college.dbo.STMAOS AS STMAOS, 
+				halesowen_college.dbo.STMBIOGR AS STMBIOGR
+		WHERE     (CT_MODULE.unique_name = RTRIM(STMAOS.AOS_CODE) COLLATE DATABASE_DEFAULT
+	 	+ ' ' + RTRIM(STMAOS.AOS_PERIOD) COLLATE DATABASE_DEFAULT)
+		AND STMAOS.student_id = @studentid
+		AND STMAOS.acad_period= '08/09'
+		AND STMBIOGR.student_id = STMAOS.student_id) AS modules,
+		
+		(SELECT CT_EVENT.event_id, CT_ROOM.name AS roomName
+		FROM CT_ROOM, CT_EVENT_ROOM, CT_EVENT
+		WHERE CT_EVENT.event_id = CT_EVENT_ROOM.event_id
+		AND CT_EVENT_ROOM.room_id = CT_ROOM.room_id) AS rooms,
+
+		(SELECT CT_EVENT.event_id, CT_STAFF.name AS staffName
+		FROM CT_EVENT, CT_EVENT_STAFF, CT_STAFF
+		WHERE CT_EVENT.event_id = CT_EVENT_STAFF.event_id
+		AND CT_EVENT_STAFF.staff_id = CT_STAFF.staff_id) AS staff,
+
+	CT_EVENT
+
+WHERE CT_EVENT_MODULE.module_id = modules.module_id
+AND CT_EVENT_MODULE.event_id = CT_EVENT.event_id
+AND CT_EVENT.event_id = rooms.event_id
+AND CT_EVENT.event_id = staff.event_id
+GO
