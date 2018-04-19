@@ -1,5 +1,5 @@
-#Timetable Application
-###The data CD contains all of the source code written by the author.
+# Timetable Application
+### The data CD contains all of the source code written by the author.
 
 Example_Timetable_Printout.pdf is an example of the printout that the timetable application generates for a student ID
 
